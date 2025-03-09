@@ -40,7 +40,7 @@ int main()
 {
     float len, high, x, y, z;
     float ABEF, ECGH, DFHG, FDCE;//面积
-    scanf("%f %f %f %f", &len, &high, &x, &y, &z);
+    scanf("%f %f %f %f %f", &len, &high, &x, &y, &z);
     ABEF = (x + y) * high / 2.0;
     FDCE = (len - x + len - y) * high / 2.0;
     ECGH = (len - x) * high / 4.0 + z * 0.5 * ( (y - x) / 2.0 + len - y );//连接CH，分别计算两个三角形面积
