@@ -74,93 +74,7 @@ int main()
     return 0;
 }
 //7.3
-// 警告：本题超纲严重，建议直接跳过，如果你会数组，指针，或者stl，可以做
-#include <stdio.h>
-#include <stdlib.h>
-// AI写的，学习一下吧
-// 计算绝对值
-int myAbs(int x) {
-    return x < 0 ? -x : x;
-}
 
-int main() {
-    int N, R;
-    scanf("%d %d", &N, &R);
-    int players[101]; // 总队员数（N最大100）
-    int A[101], B[101];
-    int a_cnt = 0, b_cnt = 0;
-    
-    // 读取所有队员实力，并分队存储
-    for (int i = 0; i < N; i++) {
-        scanf("%d", &players[i]);
-        if (players[i] > 0) {
-            A[a_cnt++] = players[i];
-        } else {
-            B[b_cnt++] = players[i];
-        }
-    }
-    
-    // 对A队按绝对值降序排序（实力越大越靠前）
-    for (int i = 0; i < a_cnt - 1; i++) {
-        for (int j = i + 1; j < a_cnt; j++) {
-            if (myAbs(A[j]) > myAbs(A[i])) {
-                int temp = A[i];
-                A[i] = A[j];
-                A[j] = temp;
-            }
-        }
-    }
-    
-    // 对B队按绝对值降序排序
-    for (int i = 0; i < b_cnt - 1; i++) {
-        for (int j = i + 1; j < b_cnt; j++) {
-            if (myAbs(B[j]) > myAbs(B[i])) {
-                int temp = B[i];
-                B[i] = B[j];
-                B[j] = temp;
-            }
-        }
-    }
-    
-    // 输出排序结果：先A队，后B队，每个数字之间用空格分隔，最后一位后不输出空格
-    for (int i = 0; i < a_cnt; i++) {
-        printf("%d", A[i]);
-        if (i < a_cnt - 1 || b_cnt > 0)
-            printf(" ");
-    }
-    for (int i = 0; i < b_cnt; i++) {
-        printf("%d", B[i]);
-        if (i < b_cnt - 1)
-            printf(" ");
-    }
-    printf("\n");
-    
-    // 模拟R轮比赛，使用两个下标分别表示A队和B队当前待出场的队员
-    int i = 0, j = 0;
-    for (int round = 0; round < R; round++) {
-        if (i < a_cnt && j < b_cnt) { // 两队都有队员
-            if (myAbs(A[i]) > myAbs(B[j]))
-                printf("A Wins!\n");
-            else if (myAbs(A[i]) < myAbs(B[j]))
-                printf("B Wins!\n");
-            else
-                printf("Draw!\n");
-            i++; j++;  // 同时出场
-        } else if (i < a_cnt) { // 只有A队有队员
-            printf("A Wins!\n");
-            i++;
-        } else if (j < b_cnt) { // 只有B队有队员
-            printf("B Wins!\n");
-            j++;
-        } else { // 双方都没有队员时提前结束
-            break;
-        }
-    }
-    
-    return 0;
-}
-
-//7.4
 #include <stdio.h>
 int main()
 {
@@ -176,7 +90,7 @@ int main()
     getchar();getchar();
     return 0;
 }
-//7.5
+//7.4
 #include <stdio.h>
 int main() 
 {
