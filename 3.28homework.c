@@ -59,13 +59,13 @@ int IsAutomorphic(int x)
 }
 void FindAutomorphic(int lower, int upper)
 {
-    int flag = 0;
+    int flag = 1;
     for (int i = lower; i <= upper; i++) // 循环判断区间内的数
     {
         if (IsAutomorphic(i))
         {
             printf("%d\n", i);
-            flag = 1; // 找到了自守数，不输出none
+            flag = 0; // 找到了自守数，不输出none
         }
     }
     if (flag)
