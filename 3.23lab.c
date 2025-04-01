@@ -43,40 +43,8 @@ void FindAutomorphic(int lower, int upper)
         printf("None\n");
     }
 }
-//6.3
-int IsTheNumber(const int N)
-{
-    if (N < 0) // 负数不是完全平方数
-    {
-        return 0;
-    }
-    int sqrtn = (int)sqrt(N); // 开根号以后强制取整数
-    if (sqrtn * sqrtn != N)   // 如果整数相乘不等于n，则不是完全平方数
-    {
-        return 0;
-    }
-    int arr[10] = {0}; // 0~9共10个数字
-    int temp = N;
-    // 循环统计每个数字的出现次数
-    while (temp > 0)
-    {
-        int num = temp % 10; // 每次除10的余数就是一位数字
-        arr[num]++;          // 该数字出现次数加一
-        temp /= 10;          // 去除刚刚的一位数字
-    }
-    // 检查有没有某一位出现了两次
-    for (int i = 0; i < 10; i++)
-    {
-        if (arr[i]>=2)
-        {
-            return 1;
-        }
-        
-    }
-    return 0;
-}
 
-//6.4
+//6.3
 int is( int number )
 {
     int sum = 0;//创建加和变量
@@ -112,7 +80,7 @@ void count_sum( int a, int b )
     printf("count = %d, sum = %d", count, sum);
 }
 
-//6.5
+//6.4
 int fun (void)
 {
     int num;
@@ -134,7 +102,7 @@ int fun (void)
     return sum;
 }
 
-//6.6
+//6.5
 int sign( int x )
 {
     if(x>0)
@@ -151,7 +119,7 @@ int sign( int x )
     }
 }
 
-//6.7
+//6.6
 void Fun(int x, int p)
 {
     // 如果 x 大于等于 p，先处理x除以p后的部分
