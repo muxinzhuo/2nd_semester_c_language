@@ -34,29 +34,80 @@ int main()
 #include <stdio.h>
 int main()
 {
-    int N, M;
-    scanf("%d %d", &N, &M);
-    int arr[N];
-    for (int i = 0; i < N; i++)
+    int arr1[20] = {0}, arr2[20] = {0}, m, n;
+    int count = 0, arr3[40] = {0}, outputtime = 1;
+    scanf("%d", &m);
+    for (int i = 0; i < m; i++)
     {
-        scanf("%d", &arr[i]);
+        scanf("%d", &arr1[i]);
     }
-    M = M % N; // 防止 M 超过 N
-    // 先输出最后 M 个元素
-    for (int i = N - M; i < N; i++)
+    scanf("%d", &n);
+    for (int j = 0; j < n; j++)
     {
-        printf("%d", arr[i]);
-        if (i < N - 1)
-            printf(" "); // 控制格式，防止多余空格
+        scanf("%d", &arr2[j]);
     }
-    // 再输出前 N-M 个元素
-    for (int i = 0; i < N - M; i++)
+    for (int i = 0; i < m; i++)
     {
-        if (i == 0 && M > 0)
-            printf(" "); // 在 M > 0 时补充空格
-        printf("%d", arr[i]);
-        if (i < N - M - 1)
-            printf(" ");
+        int flag = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (arr1[i] == arr2[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        int printed = 0;
+        for (int k = 0; k < count; k++)
+        {
+            if (arr3[k] == arr1[i])
+            {
+                printed = 1;
+                break;
+            }
+        }
+
+        if (flag == 0 && printed == 0)
+        {
+            if (!outputtime)
+            {
+                printf(" ");
+            }
+            printf("%d", arr1[i]);
+            arr3[count++] = arr1[i];
+            outputtime = 0;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        int flag = 0;
+        for (int j = 0; j < m; j++)
+        {
+            if (arr2[i] == arr1[j])
+            {
+                flag = 1;
+                break;
+            }
+        }
+        int printed = 0;
+        for (int k = 0; k < count; k++)
+        {
+            if (arr3[k] == arr2[i])
+            {
+                printed = 1;
+                break;
+            }
+        }
+        if (flag == 0 && printed == 0)
+        {
+            if (!outputtime)
+            {
+                printf(" ");
+            }
+            printf("%d", arr2[i]);
+            arr3[count++] = arr2[i];
+            outputtime = 0;
+        }
     }
     return 0;
 }
